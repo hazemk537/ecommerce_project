@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import './ProductCard.css'
 
@@ -7,10 +7,9 @@ const ProductCard = ({ data }) => {
   const [show, setshow] = useState(false)
   const [count, setCount] = useState(1)
 
-  // const getproductid = () => {
-  //   alert(data.id)
-  // }
 
+  const newUrl = data.pictureUrl.replace(/^https:\/\/[^\/]+/, "http://talabat.runasp.net");
+  // console.log(newUrl)
   const addtocart = () => {
     let cart = JSON.parse(localStorage.getItem('cart'))
     let productdata = data
@@ -56,25 +55,16 @@ const ProductCard = ({ data }) => {
     // toast.success('Item added to cart')
 
   }
+
+
   return (
     <div className='product'>
       <div className='s1'>
-        <img src={data.ProductImage[0].image} alt={'no img'} />
+        <img  src={newUrl} alt={'nosdfsdf img'} />
+
       </div>
-      <div className='s2'>
-        <h3>
-          $ {
-            data.ProductPrice - (data.ProductPrice * data.ProductDiscount / 100)
-          }
-          <span>${data.ProductPrice}</span>
-        </h3>
-        <p>{
-          data.ProductName
-        }</p>
-      </div>
-      <div className='s3'>
-        <p>{data.counttype}</p>
-      </div>
+      <p>{data.name}</p>
+
       {
         show ?
           <div className='addbtn'>
@@ -122,8 +112,10 @@ const ProductCard = ({ data }) => {
 
           </div>
       }
+
     </div>
   )
+
 }
 
 export default ProductCard
