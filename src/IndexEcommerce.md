@@ -34,3 +34,23 @@
 - cart page
 - host app
 
+
+## Front end Libraries
+- The front end uses mainly the following JS libraries:
+  1. react -> for manging front-end component state and life cycle.
+  2. react-dom ->  for for mounting components to the browser DOM tree .
+  3. react-router-dom -> for Dynamic Routing.
+  4. redux -> for global state Management.
+
+
+## Front end Reuse code 
+- we Built our front end based on another free frontend, and changed it  to align our needs : 
+  1. added get all products API...
+  2. added get product By Id API.
+  3. added get products in a category .
+  4. added get all categories.
+  5. added Login POSt request
+  6. added signup POST request 
+  7. 
+   
+ 
