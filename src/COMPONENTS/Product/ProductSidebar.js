@@ -2,7 +2,7 @@ import React from 'react'
 import AllProduct from './AllProduct'
 import CategorySidebar from './CategorySidebar'
 import './Product_Sidebar.css'
-const Product_Sidebar = () => {
+const ProductSidebar = () => {
   
   return (
     <div className='product_sidebar'>
@@ -12,4 +12,4 @@ const Product_Sidebar = () => {
   )
 }
 
-export default Product_Sidebar
+export default ProductSidebar

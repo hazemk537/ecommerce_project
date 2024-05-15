@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { Link, json } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Navbar from '../../COMPONENTS/Navbar/Navbar'
 import './AuthPage.css'
-import { setSelectionRange } from '@testing-library/user-event/dist/utils'
 
 const Login = () => {
 

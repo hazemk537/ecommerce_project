@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Navbar from '../../COMPONENTS/Navbar/Navbar'
 import './AuthPage.css'
 const Signup = () => {
