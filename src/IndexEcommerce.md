@@ -16,8 +16,9 @@
    - navbar> token&&greenColor  !token&&redColor  
    - navbar> logout onclick(remove token)  
    - appjs>  useEffect(if token return children) -->
+   - login>onSubmit----->direct 
 - home> product image gallty
-- host and send 
+<!-- - host and send  -->
 <!-- - make pdf 
   - team
   - tech
@@ -51,6 +52,10 @@
   4. added get all categories.
   5. added Login POSt request
   6. added signup POST request 
-  7. 
+  7. added Redux to achive 
+     - products filtering by category
+     - products searching by name 
+  
+
    
  
