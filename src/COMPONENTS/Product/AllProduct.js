@@ -2,13 +2,28 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from './ProductCard'
 
 import './AllProduct.css'
+import { productActions } from '../../reduxStore/productsSlice'
+import { useDispatch, useSelector } from 'react-redux'
 const AllProduct = () => {
-  
 
-    const [products, setProducts] = useState([])
-   let succsessState ;
+
+    const productsReduxState = useSelector(state => state)
+
+    const dispatch = useDispatch()
+    // console.log(productsReduxState);
+    // Still pass action objects to `dispatch`, but they're created for us
+    // store.dispatch()
+    let succsessState;
+
+
+
+
+
+
 
     useEffect(() => {
+
+
         const token = localStorage.getItem("token");
 
 
@@ -20,20 +35,20 @@ const AllProduct = () => {
         })
             .then((response) => {
                 if (response.status === 200) //success
-                succsessState=true;
-                console.log(response.state)
+                    succsessState = true;
                 return response.json();
 
             })
 
             .then((jsonData) => {
-                
-                if (succsessState) {
-                    console.log(jsonData.data);
 
-                    setProducts(jsonData.data)
+                if (succsessState) {
+                    // console.log(productActions.setProducts(jsonData.data));
+
+                    dispatch(productActions.setProducts(jsonData.data))
+
                 }
-                
+
                 // Handle your response data here (e.g., update state, redirect, etc.)
             })
             .catch((error) => {
@@ -45,16 +60,17 @@ const AllProduct = () => {
 
     return (
         <div className='allproducts'>
-            <h1>All Products</h1>
-            <div className='products'>
+            {productsReduxState.filteredProducts && <div className='products'>
                 {
-                    products.map((item, index) => {
+
+                    productsReduxState.filteredProducts.map((item, index) => {
+
                         return (
                             <ProductCard data={item} key={index} />
                         )
                     })
                 }
-            </div>
+            </div>}
         </div>
     )
 }

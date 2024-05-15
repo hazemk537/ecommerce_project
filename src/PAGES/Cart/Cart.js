@@ -29,7 +29,7 @@ const Cart = () => {
 
       let tempsubtotal = 0
       cart.forEach(item => {
-        tempsubtotal += item.productdata.SalesPrice * item.quantity
+        tempsubtotal += item.productdata.price * item.quantity
       })
       // console.log(tempsubtotal)
       setsubtotal(tempsubtotal)
@@ -234,7 +234,7 @@ const Cart = () => {
                                   window.location.href = `/product/${item.productdata.ProductId}`
                                 }}
                               >
-                                <img src={item.productdata.ProductImage[0].image}
+                                <img src={item.productdata.pictureUrl.image}
                                   alt={item.productdata.ProductName} />
                                 <p>{
                                   item.productdata.ProductName
@@ -275,13 +275,13 @@ const Cart = () => {
                               data-label="Price"
                             >
                               <p>
-                                $ {item.productdata.SalesPrice ? item.productdata.SalesPrice.toFixed(2) : 0.00}
+                                $ {item.productdata.price ? item.productdata.price.toFixed(2) : 0.00}
                               </p>
                             </td>
 
                             <td>
                               <p>$ {
-                                (item.productdata.SalesPrice * item.quantity).toFixed(2)
+                                (item.productdata.price * item.quantity).toFixed(2)
                               }</p>
                             </td>
 

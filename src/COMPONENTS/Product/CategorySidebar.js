@@ -1,61 +1,54 @@
-import React from 'react'
-import img1 from '../../ASSETS/Images/1.png'
-import img2 from '../../ASSETS/Images/2.png'
-import img3 from '../../ASSETS/Images/3.png'
-import img4 from '../../ASSETS/Images/4.png'
+import React, { useEffect, useState } from 'react'
+
 import './CategorySidebar.css'
+import { useDispatch } from 'react-redux'
+import { productActions } from '../../reduxStore/productsSlice'
 
 const CategorySidebar = () => {
-    const data = [
-        {
-            id: 1,
-            categoryimage: img1,
-            categoryname: 'Category 1'
-        },
-        {
-            id: 2,
-            categoryimage: img2,
-            categoryname: 'Category 2'
-        },
-        {
-            id: 3,
-            categoryimage: img3,
-            categoryname: 'Category 3'
-        },
-        {
-            id: 4,
-            categoryimage: img4,
-            categoryname: 'Category 4'
-        },
-        {
-            id: 5,
-            categoryimage: img1,
-            categoryname: 'Category 5'
-        },
-        {
-            id: 6,
-            categoryimage: img2,
-            categoryname: 'Category 6'
-        },
-        {
-            id: 7,
-            categoryimage: img3,
-            categoryname: 'Category 7'
-        },
-        {
-            id: 8,
-            categoryimage: img4,
-            categoryname: 'Category 8'
-        }
-    ]
+    const dispatch = useDispatch()
+
+    const [categorydata, setcategorydata] = useState()
+    function filterProducts(catName) {
+        dispatch(productActions.filterProductsBycat(catName))
+
+    }
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        fetch(`http://talabat.runasp.net/api/Product/Categories`, {
+            method: "Get", headers: {
+
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then((response) => {
+                if (response.status === 200) //success
+                    return response.json();
+
+            })
+
+            .then((jsonData) => {
+                setcategorydata(jsonData)
+
+                // Handle your response data here (e.g., update state, redirect, etc.)
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                // Handle any error that occurred during fetch
+            });
+
+
+    }, [])
     return (
         <div className='categorysidebar'>
             {
-                data.map((item) => {
+              categorydata &&  categorydata.map((item) => {
                     return (
-                        <div className='category' key={item.id}>
-                            <img src={item.categoryimage} alt='categoryimage' />
-                            <h3>{item.categoryname}</h3>
+
+                        <div className='category' key={item.id} onClick={() => { 
+                            
+                            filterProducts(item.name) }}>
+                            {/* <img src={item.categoryimage} alt='categoryimage' /> */}
+                            <h3>{item.name}</h3>
                         </div>
                     )
                 })

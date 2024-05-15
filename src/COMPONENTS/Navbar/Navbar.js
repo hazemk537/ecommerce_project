@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Navbar.css'
 import logo from '../../ASSETS/Images/food.svg'
 import Dropdown from 'react-bootstrap/Dropdown'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { productActions } from '../../reduxStore/productsSlice'
 const Navbar = ({ reloadnavbar }) => {
     const [cartquantity, setcartquantity] = useState(0)
+    const [token, setToken] = useState('')
 
 
     const getcarttotalitems = () => {
@@ -20,12 +23,25 @@ const Navbar = ({ reloadnavbar }) => {
             setcartquantity(0)
         }
     }
-
     useEffect(() => {
-        getcarttotalitems()
+        getcarttotalitems();
+        setToken(localStorage.getItem('token'))
+
+
+
     }, [reloadnavbar])
 
+    const searchRef = useRef();
+    const dispatch = useDispatch()
 
+    function searchProducts(event) {
+        if (event.key === 'Enter')
+            //get curretn
+            //Dispatch action to filter
+
+            dispatch(productActions.searchFilteredProducts(searchRef.current.value))
+
+    }
     const [shows3, setshows3] = useState(false)
     return (
         <nav>
@@ -33,7 +49,7 @@ const Navbar = ({ reloadnavbar }) => {
                 <img src={logo} alt='logo' className='logo' />
 
                 <div className='searchbar'>
-                    <input typ="text" placeholder="Search for products and categries" className='search' />
+                    <input onKeyPress={searchProducts} ref={searchRef} type="text" placeholder="Search for products and categries" className='search' />
 
                     <button>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -64,16 +80,19 @@ const Navbar = ({ reloadnavbar }) => {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item href="/login">Login</Dropdown.Item>
-                            <Dropdown.Item href="/signup">Signup</Dropdown.Item>
-                            <Dropdown.Item href="#">Logout</Dropdown.Item>
+                            {!token && <Link to="/login"> <span style={{padding:'10px'}}>Login</span></Link>}
+                            <br />
+                            {!token && <Link to="/signup"><span style={{padding:'10px'}}>Signup</span></Link>}
+                            {token && <Link to="/"><span onClick={() => {
+                                localStorage.removeItem("token")
+                            }}>Logout</span></Link>}
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
             </div>
             <div className='s2'>
                 <Link to='/'>
-                    <a>Home</a>
+                    Home
                 </Link>
                 {/* <Dropdown>
                     <Dropdown.Toggle variant="" id="dropdown-basic">
@@ -81,16 +100,16 @@ const Navbar = ({ reloadnavbar }) => {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">Fresh Vegetables</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Fresh Fruits</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">House Cleaning</Dropdown.Item>
+                        <span href="#/action-1">Fresh Vegetables</span>
+                        <span href="#/action-2">Fresh Fruits</span>
+                        <span href="#/action-3">House Cleaning</span>
                     </Dropdown.Menu>
                 </Dropdown> */}
                 <Link to='/about'>
-                    <a>About Us</a>
+                    About Us
                 </Link>
-                
-                
+
+
             </div>
 
             {
@@ -129,17 +148,17 @@ const Navbar = ({ reloadnavbar }) => {
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">Fresh Vegetables</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Fresh Fruits</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">House Cleaning</Dropdown.Item>
+                                    <span href="#/action-1">Fresh Vegetables</span>
+                                    <span href="#/action-2">Fresh Fruits</span>
+                                    <span href="#/action-3">House Cleaning</span>
                                 </Dropdown.Menu>
                             </Dropdown></li> */}
 
                             <li> <Link to='/about' className='stylenone'>
-                                <a>About Us</a>
+                                <Link>About Us</Link>
                             </Link></li>
 
-                           
+
                             <li>
                                 <div className='cart'>
 
@@ -161,14 +180,14 @@ const Navbar = ({ reloadnavbar }) => {
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="/login">Login</Dropdown.Item>
-                                        <Dropdown.Item href="/signup">Signup</Dropdown.Item>
-                                        <Dropdown.Item href="#">Logout</Dropdown.Item>
+                                        <span href="/login">Login</span>
+                                        <span href="/signup">Signup</span>
+                                        <span href="#">Logout</span>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </li>
 
-                           
+
                         </ul>
                     </div>
                     :

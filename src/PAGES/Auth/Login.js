@@ -10,11 +10,7 @@ const Login = () => {
 
 
     const handleSignin = (event) => {
-        // try this user
-        // {
-        //     "email": "ahmed@example.com",
-        //     "password": "H3h@.%6ji3dhewihdi"
-        //   }
+     
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -50,35 +46,7 @@ const Login = () => {
 
     };
 
-    const handleSignup = (event) => {
-        event.preventDefault();
-        //     const form = event.target;
-        //     const email = form.email.value;
-        //     const password = form.password.value;
-        //     const data = {'email': email, 'password':password };
-
-        //     fetch("http://talabat.runasp.net/api/Account/login", {
-        //       method: "POST",
-
-        //       body: JSON.stringify(data),
-        //     })
-        //     .then((response) => {
-
-        //         if (!response.ok) {
-        //           throw new Error('Network response was not ok');
-        //         }
-        //         return response.json();
-        //       })
-
-        //       .then((jsonData) => {
-        //     console.log(jsonData);
-        //     // Handle your response data here (e.g., update state, redirect, etc.)
-        //   })
-        //   .catch((error) => {
-        //     console.error('Error:', error);
-        //     // Handle any error that occurred during fetch
-        //   });
-    };
+  
 
 
 
@@ -111,7 +79,10 @@ const Login = () => {
 
                     <button type="submit" className='btn' >Login</button>
                     <h2 className='or'>OR</h2>
-                    <button onClick={handleSignup} className='btn'>Signup</button>
+                    <Link to='/signup'>   
+                     <button className='btn'>Signup</button>
+                     </Link>
+
                 </form>
             </div>
         </div>

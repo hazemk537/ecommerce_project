@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import img1 from '../../ASSETS/Images/1.png'
-import img2 from '../../ASSETS/Images/2.png'
-import img3 from '../../ASSETS/Images/3.png'
 import Footer1 from '../../COMPONENTS/Footer/Footer1'
 import Navbar from '../../COMPONENTS/Navbar/Navbar'
-import ProductsSlider from '../../COMPONENTS/Product/ProductsSlider'
 import './ProductPage.css'
+import { useSelector } from 'react-redux'
 const ProductPage = () => {
-    const [productdata, setproductdata] = React.useState({})
+
+    // the intiall state to avoid intial try which try access productdata.name productdata.picturalUrl etc
+    const [productdata, setproductdata] = React.useState({ name: '', pictureUrl: '', description: '' })
     const [succsessState, setSuccsessState] = useState(false)
     const [count, setcount] = React.useState(1)
 
@@ -17,20 +16,18 @@ const ProductPage = () => {
 
 
     const [reloadnavbar, setreloadnavbar] = React.useState(false)
-    
+
     const { prodid } = useParams()
     const [showreview, setshowreview] = React.useState(false)
-    let newUrl='' ;
-   if (productdata){
-    newUrl= productdata.pictureUrl.replace(/^https:\/\/[^\/]+/, "http://talabat.runasp.net");
-     
+    // useSelector((state)=>state.products.)
+    let newUrl = '';
+    if (productdata) {
+        newUrl = productdata.pictureUrl.replace(/^https:\/\/[^\/]+/, "http://talabat.runasp.net");
+    }
 
-   }
-   else {
-    console.log('ffffffffffffffff')
-   }
-   
+
     useEffect(() => {
+
         const token = localStorage.getItem("token");
         fetch(`http://talabat.runasp.net/api/Product/${prodid}`, {
             method: "Get", headers: {
@@ -46,7 +43,7 @@ const ProductPage = () => {
             })
 
             .then((jsonData) => {
-                    setproductdata(jsonData)
+                setproductdata(jsonData)
 
                 // Handle your response data here (e.g., update state, redirect, etc.)
             })
@@ -118,7 +115,7 @@ const ProductPage = () => {
                     </button>
                 </Link>
 
-              { productdata && <div className='c12'>
+                {productdata && <div className='c12'>
                     <img src={newUrl} alt={newUrl} />
                     <h1 className='head1'>{productdata.name}</h1>
                     <div className='c121'>
