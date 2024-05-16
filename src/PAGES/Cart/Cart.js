@@ -234,7 +234,7 @@ const Cart = () => {
                                   window.location.href = `/product/${item.productdata.ProductId}`
                                 }}
                               >
-                                <img src={item.productdata.pictureUrl.image}
+                                <img src={item.productdata.pictureUrl}
                                   alt={item.productdata.ProductName} />
                                 <p>{
                                   item.productdata.ProductName

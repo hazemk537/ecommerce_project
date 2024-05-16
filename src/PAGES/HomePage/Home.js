@@ -20,8 +20,8 @@ useLayoutEffect(() => {
                 <Navbar reloadnavbar={false} />
                 <BannerSlider />
                 {/* <HomeCategories /> */}
-                // eslint-disable-next-line react/jsx-pascal-case
-                <ProductSidebar />
+{                // eslint-disable-next-line react/jsx-pascal-case
+}                <ProductSidebar />
             </div>
         )
     else
