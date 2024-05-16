@@ -17,23 +17,12 @@
    - navbar> logout onclick(remove token)  
    - appjs>  useEffect(if token return children) -->
    - login>onSubmit----->direct 
-- home> product image gallty
+- home> products> image edit 
 <!-- - host and send  -->
 <!-- - make pdf 
   - team
   - tech
   - features -->
--  home > add to cart button
-
-- cart> /addtocart
-- cart> /showall
-- cart> /rem
-
-- brands> 
-
-# todo 2
-- cart page
-- host app
 
 
 ## Front end Libraries
