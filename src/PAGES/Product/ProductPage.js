@@ -4,12 +4,11 @@ import { toast } from 'react-toastify'
 import Footer1 from '../../COMPONENTS/Footer/Footer1'
 import Navbar from '../../COMPONENTS/Navbar/Navbar'
 import './ProductPage.css'
-import { useSelector } from 'react-redux'
 const ProductPage = () => {
 
     // the intiall state to avoid intial try which try access productdata.name productdata.picturalUrl etc
     const [productdata, setproductdata] = React.useState({ name: '', pictureUrl: '', description: '' })
-    const [succsessState, setSuccsessState] = useState(false)
+    const [, setSuccsessState] = useState(false)
     const [count, setcount] = React.useState(1)
 
     const [rating, setrating] = React.useState(0)
@@ -53,7 +52,7 @@ const ProductPage = () => {
             });
 
 
-    },[])
+    },[prodid])
 
     const addtocart = () => {
         let cart = JSON.parse(localStorage.getItem('cart'))

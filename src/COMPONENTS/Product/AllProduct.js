@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import ProductCard from './ProductCard'
 
 import './AllProduct.css'
@@ -25,8 +25,6 @@ const AllProduct = () => {
 
 
         const token = localStorage.getItem("token");
-
-
         fetch("http://talabat.runasp.net/api/Product", {
             method: "Get", headers: {
 

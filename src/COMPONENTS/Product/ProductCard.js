@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { toast } from 'react-toastify'
 import './ProductCard.css'
 
 const ProductCard = ({ data }) => {
