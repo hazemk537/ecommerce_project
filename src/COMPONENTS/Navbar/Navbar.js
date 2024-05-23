@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import './Navbar.css'
 import logo from '../../ASSETS/Images/food.svg'
 import Dropdown from 'react-bootstrap/Dropdown'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { productActions } from '../../reduxStore/productsSlice'
 const Navbar = ({ reloadnavbar }) => {
     const [cartquantity, setcartquantity] = useState(0)
     const [token, setToken] = useState('')
-
+    const Navigation = useNavigate()
 
     const getcarttotalitems = () => {
         let cart = JSON.parse(localStorage.getItem('cart'))
@@ -60,7 +60,7 @@ const Navbar = ({ reloadnavbar }) => {
                 </div>
 
                 <div className='right'>
-                    { token && <div className='cart'>
+                    {token && <div className='cart'>
 
                         <span className='qty'>{cartquantity}</span>
                         <Link to='/cart'
@@ -80,12 +80,13 @@ const Navbar = ({ reloadnavbar }) => {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            {!token && <Link to="/login"> <span style={{padding:'10px'}}>Login</span></Link>}
+                            {!token && <Link to="/login"> <span style={{ padding: '10px' }}>Login</span></Link>}
                             <br />
-                            {!token && <Link to="/signup"><span style={{padding:'10px'}}>Signup</span></Link>}
-                            {token && <Link to="/"><span onClick={() => {
+                            {!token && <Link to="/signup"><span style={{ padding: '10px' }}>Signup</span></Link>}
+                            {token && <span onClick={() => {
                                 localStorage.removeItem("token")
-                            }}>Logout</span></Link>}
+                                Navigation('/login')
+                            }}>Logout</span>}
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>

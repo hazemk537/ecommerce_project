@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Navbar from '../../COMPONENTS/Navbar/Navbar'
 import './AuthPage.css'
 
 const Login = () => {
 
     const [succsessState, setSuccsessState] = useState(false)
+    const Navigation = useNavigate()
 
 
     const handleSignin = (event) => {
-     
+
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         const data = { 'email': email, 'password': password };
-
         fetch("http://talabat.runasp.net/api/Account/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -32,6 +32,7 @@ const Login = () => {
                 console.log(jsonData);
                 if (succsessState) {
                     localStorage.setItem("token", jsonData.token)
+                    Navigation('/')
                     console.log("token added to local storage")
                 }
 
@@ -45,7 +46,7 @@ const Login = () => {
 
     };
 
-  
+
 
 
 
@@ -78,9 +79,9 @@ const Login = () => {
 
                     <button type="submit" className='btn' >Login</button>
                     <h2 className='or'>OR</h2>
-                    <Link to='/signup'>   
-                     <button className='btn'>Signup</button>
-                     </Link>
+                    <Link to='/signup'>
+                        <button className='btn'>Signup</button>
+                    </Link>
 
                 </form>
             </div>
