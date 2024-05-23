@@ -33,6 +33,7 @@ const AllProduct = () => {
         })
             .then((response) => {
                 if (response.status === 200) //success
+    //eslint-disable-next-line
                     succsessState = true;
                 return response.json();
 

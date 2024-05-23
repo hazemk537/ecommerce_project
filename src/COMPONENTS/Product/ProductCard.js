@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './ProductCard.css'
 
 const ProductCard = ({ data }) => {
   const [show, setshow] = useState(false)
   const [count, setCount] = useState(1)
 
-
+    //eslint-disable-next-line
   const newUrl = data.pictureUrl.replace(/^https:\/\/[^\/]+/, "http://talabat.runasp.net");
   // console.log(newUrl)
   const addtocart = () => {

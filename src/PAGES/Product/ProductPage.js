@@ -20,7 +20,9 @@ const ProductPage = () => {
     const [showreview, setshowreview] = React.useState(false)
     // useSelector((state)=>state.products.)
     let newUrl = '';
+    //eslint-disable-next-line
     if (productdata) {
+    //eslint-disable-next-line
         newUrl = productdata.pictureUrl.replace(/^https:\/\/[^\/]+/, "http://talabat.runasp.net");
     }
 

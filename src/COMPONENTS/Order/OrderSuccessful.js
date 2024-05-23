@@ -4,9 +4,9 @@ import { useRecoilState } from 'recoil'
 import { orderSuccessfulProvider } from '../../Providers/OrderSuccessfulProvider'
 
 const OrderSuccessful = ({ orderid, message, redirecto }) => {
-
-    const [ordersuccesscont, setordersuccesscont] = useRecoilState(orderSuccessfulProvider)
-    const [orderdata, setorderdata] = useState({
+   
+    const [, setordersuccesscont] = useRecoilState(orderSuccessfulProvider)
+    const [orderdata, ] = useState({
         OrderNo: orderid,
         OrderDate: '12/12/2021',
         OrderStatus: 'Delivered',
@@ -19,6 +19,7 @@ const OrderSuccessful = ({ orderid, message, redirecto }) => {
                 Price: 100,
                 Quantity: 2,
             },
+            
             {
                 ProductName: 'Product 2',
                 Price: 5000,
@@ -37,7 +38,7 @@ const OrderSuccessful = ({ orderid, message, redirecto }) => {
         >
             <button className='popup__close-btn'
                 onClick={() => {
-
+    //eslint-disable-next-line
                     if(redirecto == 'userorders'){
                         window.location.href = '/user/yourorders'
                     }

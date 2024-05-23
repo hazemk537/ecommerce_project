@@ -2,14 +2,8 @@ import React from "react";
 import "./Aboutus.css";
 import Navbar from '../../COMPONENTS/Navbar/Navbar'
 
-import Mohamed_Zaki from "../../ASSETS/Images/Mohamed_Zaki.jpg";
-import HazemElshahawy from "../../ASSETS/Images/Mohamed_Zaki.jpg";
-import GithubIcon from "../../ASSETS/Images/github .svg";
-
 function About() {
-    const handleGithubClick = (githubUrl) => {
-        window.open(githubUrl, "_blank"); 
-    };
+  
 
     return (
         <div>
@@ -32,10 +26,8 @@ function About() {
                         <p>Front-End</p>
                         <div className="social">
                             {/* Use the SVG icon instead of <i> tag */}
-                            <a href="https://github.com/mohamedz133" 
-                            target="_blank" onClick={() => handleGithubClick("https://github.com/mohamedz133")}>
-                                <img  className="github" src={GithubIcon} alt="GitHub Icon" />
-                            </a>
+                           
+                         
                         </div>
                     </div>
                     
@@ -52,10 +44,8 @@ function About() {
                         <p>Front-End</p>
                         <div className="social">
                             {/* Use the SVG icon instead of <i> tag */}
-                            <a href="https://github.com/hazemk537?tab=repositories" 
-                            target="_blank" onClick={() => handleGithubClick("https://github.com/hazemk537?tab=repositories")}>
-                                <img  className="github" src={GithubIcon} alt="GitHub Icon" />
-                            </a>
+                           
+                               
                         </div>
                     </div>
                 </div>
@@ -71,10 +61,7 @@ function About() {
                         <p>Front-End</p>
                         <div className="social">
                             {/* Use the SVG icon instead of <i> tag */}
-                            <a href="" 
-                            target="_blank" onClick={() => handleGithubClick("")}>
-                                <img  className="github" src={GithubIcon} alt="GitHub Icon" />
-                            </a>
+                           
                         </div>
                     </div>
                 </div>
@@ -91,10 +78,8 @@ function About() {
                         <p>Back-End</p>
                         <div className="social">
                             {/* Use the SVG icon instead of <i> tag */}
-                            <a href="" 
-                            target="_blank" onClick={() => handleGithubClick("")}>
-                                <img  className="github" src={GithubIcon} alt="GitHub Icon" />
-                            </a>
+                            
+                           
                         </div>
                     </div>
                 </div>
@@ -113,10 +98,7 @@ function About() {
                         <p>Back-End</p>
                         <div className="social">
                             {/* Use the SVG icon instead of <i> tag */}
-                            <a href="" 
-                            target="_blank" onClick={() => handleGithubClick("")}>
-                                <img  className="github" src={GithubIcon} alt="GitHub Icon" />
-                            </a>
+                           
                         </div>
                     </div>
                 </div>
@@ -134,10 +116,8 @@ function About() {
                         <p>Back-End</p>
                         <div className="social">
                             {/* Use the SVG icon instead of <i> tag */}
-                            <a href="https://github.com/ahmed1selem" 
-                            target="_blank" onClick={() => handleGithubClick("https://github.com/ahmed1selem")}>
-                                <img  className="github" src={GithubIcon} alt="GitHub Icon" />
-                            </a>
+                            
+                               
                         </div>
                     </div>
                 </div>
